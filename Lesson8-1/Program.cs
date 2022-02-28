@@ -15,23 +15,29 @@ namespace Lesson8_1
             string privetPolzov = Properties.Settings.Default.privetPolz;
             Console.WriteLine($"{privetPolzov}");
 
+            if (string.IsNullOrEmpty(Properties.Settings.Default.UserName) | string.IsNullOrEmpty(Properties.Settings.Default.UserAge) | string.IsNullOrEmpty(Properties.Settings.Default.UserWork))
+            {
+
                 Console.WriteLine("Введите имя пользователя:");
                 Properties.Settings.Default.UserName = Console.ReadLine();
-                string userName = Properties.Settings.Default.UserName;
+                
 
                 Console.WriteLine("Введите свой возраст");
                 Properties.Settings.Default.UserAge = Console.ReadLine();
-                string userAge = Properties.Settings.Default.UserAge;
                 
+
                 Console.WriteLine("Введите свой род деятельности");
                 Properties.Settings.Default.UserWork = Console.ReadLine();
-                string userWork = Properties.Settings.Default.UserWork;
                 Properties.Settings.Default.Save();
+            }
+            else
+            {
+                string userName = Properties.Settings.Default.UserName;
+                string userAge = Properties.Settings.Default.UserAge;
+                string userWork = Properties.Settings.Default.UserWork;
+                Console.WriteLine($" имя пользователя {userName} \n возраст {userAge} \n род деятельности {userWork}");
+            }
 
-
-            Console.WriteLine($" имя пользователя {userName} \n возраст {userAge} \n род деятельности {userWork}");
-            
-            
             Console.ReadKey();
         }
     }
